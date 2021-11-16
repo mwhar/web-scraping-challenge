@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    .image-photos {
+      width: 500px;
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <!-- <p>Mars News. Mars Images. Mars Facts. Mars Hemispheres</p> -->
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <!-- latest news -->
+    <div class = "row">
+      <div class = "col-md-12">
+        <h2>Latest Mars News</h2>
+        <h3>{{ mars_information.news_title }}</h3>
+        <p>{{ mars_information.news_p }}</p>
+      </div>
+    </div> 
+    <div class = "row">
+      <div class = "col-md-8">
+        <h2>Featured Mars Image</h2>
+        <img src="{{ mars_information.featured_imge_url }}" width= 400, height = 400, alt="Featured_mars_image">
+      </div>
+      <div class = "col-md-4">
+        <h2>Mars Facts</h2>
+        {{ mars_information.facts_table | safe}}
+        
+      </div>
+    </div>    
+    <hr>
+      <div class = "row">
+          <div>
+<body>
+<div class="row">
+  <div class="col-md-12">
+      </br> 
+      <div id="bottom_space_data_pg" style="background-color:wheat;"> </div>
+  </div>
+</div>
+
+  <div id = "bottom_visual" class="container"> 
+      <div class="row">
+          <div class="col-md-12">
+              </br> 
+          </div>
+      </div>
+      <hr> 
+  <div class="row align-items-center">
+      <div class = 'col-md-4'></br></br></br></div>
+      <div class="col-lg-4">
+          <h3 id="bot_header">Mars Hemispheres</h3>
+      </div>
+      <div class = 'col-md-4'></br></br></br></div>
+  </div>
+  <div class="row align-items-center">
+      {% for hemisphere in mars_information.hemispheres %}
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{ hemisphere.image_url }}" classes="card-img-top image-photos"  width= 200 height = 200 alt="...">
+            <h3 class="card-title">{{ hemisphere.title }}</h3>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  <hr>
+</div>
+</body>
+</html>
